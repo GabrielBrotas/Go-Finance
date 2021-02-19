@@ -1,4 +1,4 @@
-const formatValue = (value: number): string => {
+export const formatValue = (value: number): string => {
   const formatter = new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
@@ -7,4 +7,7 @@ const formatValue = (value: number): string => {
   return formatter.format(value);
 };
 
-export default formatValue;
+export const revertFormattedValue = (value: string): number => {
+  const formattedValue = value.split('R$')[1].trim().replace(',', '.');
+  return Number(formattedValue);
+};

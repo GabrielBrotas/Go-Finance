@@ -1,10 +1,12 @@
 import styled from 'styled-components';
+import { shade } from 'polished';
 
 interface CardProps {
   total?: boolean;
 }
 
 export const Container = styled.div`
+  position: relative;
   width: 100%;
   max-width: 1120px;
   margin: 0 auto;
@@ -47,9 +49,25 @@ export const Card = styled.div`
   }
 `;
 
-export const TableContainer = styled.section`
-  margin-top: 64px;
+export const Button = styled.button`
+  display: flex;
+  justify-content: center;
 
+  width: 50%;
+  margin: 40px auto;
+  background: #ff872c;
+  color: #fff;
+  border-radius: 5px;
+  padding: 15px 80px;
+  border: 0;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background: ${shade(0.2, '#ff872c')};
+  }
+`;
+
+export const TableContainer = styled.section`
   table {
     width: 100%;
     border-spacing: 0 8px;

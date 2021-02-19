@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import income from '../../assets/income.svg';
 import outcome from '../../assets/outcome.svg';
@@ -7,13 +7,20 @@ import total from '../../assets/total.svg';
 import api from '../../services/api';
 
 import Header from '../../components/Header';
+import TransactionModal from '../../components/TransactionModal';
 
-import formatValue from '../../utils/formatValue';
+import { formatValue } from '../../utils/formatValue';
 import formatDate from '../../utils/formatDate';
 
-import { Container, CardContainer, Card, TableContainer } from './styles';
+import {
+  Container,
+  CardContainer,
+  Card,
+  TableContainer,
+  Button,
+} from './styles';
 
-interface Transaction {
+export interface Transaction {
   id: string;
   title: string;
   value: number;
@@ -33,6 +40,12 @@ interface Balance {
 const Dashboard: React.FC = () => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [balance, setBalance] = useState<Balance>({} as Balance);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleChangeModalVisibility = useCallback((status: boolean) => {
+    setIsModalOpen(status);
+  }, []);
 
   useEffect(() => {
     async function loadTransactions(): Promise<void> {
@@ -89,6 +102,10 @@ const Dashboard: React.FC = () => {
           </Card>
         </CardContainer>
 
+        <Button type="button" onClick={() => handleChangeModalVisibility(true)}>
+          Adicionar nova transação
+        </Button>
+
         <TableContainer>
           <table>
             <thead>
@@ -119,6 +136,16 @@ const Dashboard: React.FC = () => {
             </tbody>
           </table>
         </TableContainer>
+
+        {isModalOpen && (
+          <TransactionModal
+            handleChangeModalVisibility={handleChangeModalVisibility}
+            transactions={transactions}
+            setTransactions={setTransactions}
+            balance={balance}
+            setBalance={setBalance}
+          />
+        )}
       </Container>
     </>
   );
