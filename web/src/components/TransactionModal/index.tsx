@@ -64,11 +64,14 @@ const TransactionModal: React.FC<TransactionModalProps> = ({
           total: revertFormattedValue(balance.total),
         };
 
+        console.log(balanceFormatted.income);
         if (type === 'income') {
-          balanceFormatted.income += Number(data.transaction.value);
+          balanceFormatted.income += parseFloat(data.transaction.value);
         } else {
-          balanceFormatted.outcome += Number(data.transaction.value);
+          balanceFormatted.outcome += parseFloat(data.transaction.value);
         }
+        console.log(balanceFormatted.income);
+
         balanceFormatted.total =
           balanceFormatted.income - balanceFormatted.outcome;
 
