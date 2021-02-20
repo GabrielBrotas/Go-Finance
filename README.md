@@ -4,7 +4,7 @@
   Financial control where the user can add the incomes, outcomes and also import csv transactions. <br /> 
 
 ## View
-<img src="https://github.com/GabrielBrotas/Go-MarketPlace/blob/main/src/assets/app.gif" />
+<img src="https://github.com/GabrielBrotas/Go-Finance/blob/main/assets/app.gif" />
 
 ## 💻 Technologies
   ### Frontend
