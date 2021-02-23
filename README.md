@@ -1,7 +1,7 @@
 # Go-Finance
 
 ## 🚀 Project
-  Financial control where the user can add the incomes, outcomes and also import csv transactions. <br /> 
+  Financial control where the user can add incomes, outcomes and also import csv transactions. <br /> 
 
 ## View
 <img src="https://github.com/GabrielBrotas/Go-Finance/blob/main/assets/app.gif" />
